@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">json_to_server</string>
+    <string name="base_url">http://apps.coreservlets.com/NetworkingSupport/loan-calculator</string>
+    <string name="loan_amount_prompt">Loan amount:&#160;&#160;</string>
+    <string name="interest_rate_prompt">Interest rate:&#160;&#160;</string>
+    <string name="loan_period_prompt">Months:&#160;&#160;</string>
+    <string name="loan_button_text">Calculate Payments</string>
+    <string name="monthly_payment_prompt">Monthly payment:&#160;&#160;</string>
+    <string name="total_payments_prompt">Total payments:&#160;&#160;</string>
+</resources>
