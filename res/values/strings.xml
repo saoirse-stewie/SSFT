@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">json_to_server</string>
-    <string name="base_url">http://apps.coreservlets.com/NetworkingSupport/loan-calculator</string>
+    <string name="base_url">http://10.3.4.71:8080/loan-calculator</string>
     <string name="loan_amount_prompt">Loan amount:&#160;&#160;</string>
     <string name="interest_rate_prompt">Interest rate:&#160;&#160;</string>
     <string name="loan_period_prompt">Months:&#160;&#160;</string>

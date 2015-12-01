@@ -2,6 +2,7 @@ package com.example.json_to_server;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.StrictMode;
 import android.view.View;
@@ -41,10 +42,46 @@ public class MyActivity extends Activity {
         t2= (TextView)findViewById(R.id.txt1);
         t3=(TextView)findViewById(R.id.txt2);
 
-        StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
-        StrictMode.setThreadPolicy(policy);
 
     }
+
+    private class HttpAsyncTask extends AsyncTask<String, Void, String> {
+        @Override
+        protected String doInBackground(String... urls) {
+
+            String  jsonString = null;
+            try {
+
+                jsonString = HttpUtils.urlContentPost(urls[0],"loanInputs" ,urls[1]);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
+            return jsonString;
+        }
+        protected void onPostExecute(String result) {
+            JSONObject result2= null;
+            try {
+                result2 = new JSONObject(result);
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+
+            try {
+                System.out.println("here");
+                et2.setText(result2.getString("loanAmount"));
+                et3.setText(result2.getString("annualInterestRateInPercent"));
+                et4.setText(result2.getString("loanPeriodInMonths"));
+                t2.setText(result2.getString("formattedMonthlyPayment"));
+                t3.setText(result2.getString("formattedTotalPayments"));
+
+            } catch (JSONException e) {
+               e.printStackTrace();
+            }
+
+        }
+
+        }
     public void showLoanPayments(View v) {
 
 
@@ -52,35 +89,12 @@ public class MyActivity extends Activity {
         String amount = et2.getText().toString();
         String rate = et3.getText().toString();
         String period = et4.getText().toString();
-
         Loan_inputs li = new Loan_inputs(amount,rate,period);
-
         JSONObject job = new JSONObject(li.getInputmap());
+        // result = new JSONObject(jsonString);
+        new HttpAsyncTask().execute(url,job.toString());
 
-        try {
-            String  jsonString = HttpUtils.urlContentPost(url, "loanInputs", job.toString());
-
-            JSONObject result = new JSONObject(jsonString);
-            t2.setText(result.getString("formattedMonthlyPayment"));
-            t3.setText(result.getString("formattedTotalPayments"));
-            et2.setText(result.getString("loanAmount"));
-            et3.setText(result.getString("annualInterestRateInPercent"));
-            et4.setText(result.getString("loanPeriodInMonths"));
-
-        } catch (ClientProtocolException e) {
-
-            // mTotalPaymentsResult.setText("");
-        } catch (IOException e) {
-
-            //  mTotalPaymentsResult.setText("");
-        } catch(JSONException jse) {
-
-            //  mTotalPaymentsResult.setText("");
-        }//
-
-        // } catch (JSONException e) {
-        // e.printStackTrace();
-        ///}
     }
+
 
 }

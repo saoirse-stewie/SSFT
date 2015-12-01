@@ -18,14 +18,14 @@ import org.apache.http.message.*;
  *  the coreservlets.com Android programming tutorial series</a>.
  */
 
-public class HttpUtils { 
-  /** Retrieve body of an address as a single large String, using HTTP GET. 
+public class HttpUtils {
+  /** Retrieve body of an address as a single large String, using HTTP GET.
    *  Query parameters are not set separately, but should be URL-encoded and attached to
    *  the base address in standard form. For example, the address might be
    *  a single String like "http://example.com/blah?param1=foo+bar&param2=baz".
    *  The return value is a single String containing the entire body of
    *  the response, assuming the response was successful (status in the 200's).
-   * 
+   *
    * @param address the URL as a String, with query string (if any) attached
    * @return the body of the response, with no headers or status line
    * @throws IOException if connection is refused or there is another problem
@@ -37,22 +37,22 @@ public class HttpUtils {
     ResponseHandler<String> handler = new BasicResponseHandler();
     return(client.execute(httpGet, handler));
   }
-  
-  /** Retrieve body of an address as a single large String, using HTTP POST. 
+
+  /** Retrieve body of an address as a single large String, using HTTP POST.
    *  Query parameters are supplied separately, as alternating names and values,
    *  and should NOT be URL-encoded because the utility encodes them for you.
    *  For example, a typical request might look like
    *  urlContentPost("http://example.com/blah", "param1", "foo bar", "param2", "baz").
    *  The return value is a single String containing the entire body of
    *  the response, assuming the response was successful (status in the 200's).
-   * 
+   *
    * @param address the base URL as a String, with no query parameters attached
    * @param paramNamesAndValues alternating param names and param values, un-encoded
    * @return the body of the response, with no headers or status line
    * @throws IOException if connection is refused or there is another problem
    * @throws ClientProtocolException if HTTP status is 300 or greater
    */
-  public static String urlContentPost(String address, String ... paramNamesAndValues) 
+  public static String urlContentPost(String address, String ... paramNamesAndValues)
       throws IOException, ClientProtocolException {
     HttpClient client = new DefaultHttpClient();
     HttpPost httpPost = new HttpPost(address);
@@ -65,6 +65,7 @@ public class HttpUtils {
     UrlEncodedFormEntity entity = new UrlEncodedFormEntity(params, "UTF-8");
     httpPost.setEntity(entity);
     ResponseHandler<String> handler = new BasicResponseHandler();
+    //System.out.println("here");
     return(client.execute(httpPost, handler));
   }
 }
