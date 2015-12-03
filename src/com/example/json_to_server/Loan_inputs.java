@@ -21,9 +21,9 @@ public class Loan_inputs {
     public Loan_inputs(String amount, String interest, String period)
     {
         inputmap  = new HashMap<String, String>();
-        inputmap.put("amount" , amount);
-        inputmap.put("rate" , interest);
-        inputmap.put("months" , period);
+        inputmap.put("number1" , amount);
+        inputmap.put("number2" , interest);
+        inputmap.put("number3" , period);
 
 
 
