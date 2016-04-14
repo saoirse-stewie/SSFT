@@ -1,42 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+                xmlns:android="http://schemas.android.com/apk/res/android"
+
               android:orientation="vertical"
               android:layout_width="fill_parent"
               android:layout_height="fill_parent"
+              android:background="@drawable/ryu"
+              android:gravity="center_horizontal"
 >
-    <Button
-            android:id="@+id/btn2"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:text="StartService"
-            android:onClick="Rand"
 
-
-            />
-   <TextView android:id="@+id/ServiceText"
-             android:layout_width="fill_parent"
-             android:layout_height="150dp"/>
-
-    />
-    <Button android:id="@+id/btn3"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Stop Service"
-            android:onClick="stopService"
-            />
-    <Button android:id="@+id/btn1"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="calculate"
-            android:onClick="showLoanPayments"
-
-    />
     <TextView
             android:id="@+id/base"
             android:layout_width="150dp"
             android:layout_height="wrap_content"
             android:text="Base URL"
-            />
+            android:textColor="@color/textbody"
+    />
 
     <EditText
             android:id="@+id/et1"
@@ -44,41 +23,26 @@
             android:textSize="10dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            />
-    <TextView
-            android:layout_width="150dp"
-            android:layout_height="wrap_content"
-            android:text="sum: "
+            android:textColor="@color/textbody"
+
     />
+    <Button android:id="@+id/btn1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="CR MP CR MP CR HK"
+            android:onClick="showLoanPayments"
+    />
+    <!--
     <TextView
             android:id="@+id/txt1"
-            android:layout_width="150dp"
-            android:layout_height="wrap_content"
-    />
-    <TextView
-            android:layout_width="150dp"
-            android:layout_height="wrap_content"
-            android:text="max"
-    />
-    <TextView
-            android:id="@+id/txt2"
-            android:layout_width="150dp"
-            android:layout_height="wrap_content"
-    />
-    <TextView
-            android:layout_width="150dp"
-            android:layout_height="wrap_content"
-            android:text="min"
-            />
-    <TextView
-            android:id="@+id/txt3"
-            android:layout_width="150dp"
-            android:layout_height="wrap_content"
-            />
-
-
-
-
+            android:layout_width="match_parent"
+            android:layout_height="400dp"
+            android:textColor="@color/textbody"
+    /-->
+   <com.github.mikephil.charting.charts.LineChart
+            android:id="@+id/chart"
+            android:layout_width="match_parent"
+            android:layout_height="300dp" />
 
 
 
